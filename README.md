@@ -1,47 +1,58 @@
-# generator-smokegen [![Build Status](https://secure.travis-ci.org/ravenscar/generator-smokegen.png?branch=master)](https://travis-ci.org/ravenscar/generator-smokegen)
+# common module
 
-> [Yeoman](http://yeoman.io) generator
+This project uses bower (via node, git) gulp (via node), compass (via ruby), and karma (via node) for building and testing.
 
+Ensure git is installed and git is in your path, to test 'git --version' in a terminal.
+Ensure node and npm are installed (http://nodejs.org/), to test 'node -v', 'npm -v' in a terminal.
+Ensure ruby 1.9.x is installed (http://rubyinstaller.org/downloads/), make sure you choose the option to add to the path.
+Ensure ruby and gem are in your path env variable (probably C:\Ruby193\bin), to test 'ruby -v', 'gem -v' in a terminal.
+Ensure compass is installed (http://compass-style.org/install/), to test 'compass -v' in a terminal.
 
-## Getting Started
+If you are behind a firewall and can't access git:// urls you may need to run the following command:
+git config --global url.https://github.com/.insteadOf git://github.com/
 
-### What is Yeoman?
+Ensure gulp, bower, karma-cli are installed globally.
+npm install -g bower gulp karma-cli
 
-Trick question. It's not a thing. It's this guy:
+Install the project (probably done by yeoman):
+npm install
+bower install
 
-![](http://i.imgur.com/JHaAlBJ.png)
+Build the project:
+gulp build
+(or)
+gulp
 
-Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
+Run the tests:
+gulp test
 
-Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
+Serve the project locally (http:\\localhost:9001\):
+gulp serve
 
-```bash
-npm install -g yo
-```
+Build the distribution:
+gulp dist
 
-### Yeoman Generators
+Serve the distribution locally (http:\\localhost:9001\):
+gulp serve-dist
 
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
+To autowire in new bower components
+> gulp wiredep
 
-To install generator-smokegen from npm, run:
+To autowire in YOUR js and scss files
+> gulp wireapp
 
-```bash
-npm install -g generator-smokegen
-```
+The distribution contains (at least):
+index.html      : for the demo
+scripts/        : for the project and vendor scripts
+styles/         : for the project and vendor css
+sass/           : for the project sass
+fonts/          : for the fontawesome fonts
 
-Finally, initiate the generator:
+All these need to be present for the the distribution to be demo'ed in a browser, but it is suggested that not all these
+be included in projects which use this as a module. The vendor.js, vendor.css, and main.css files will be quite large
+and often will repeat dependencies present in your main projects which includes this module e.g. bootstrap, angular,
+angular-bootstrap and font-awesome.
 
-```bash
-yo smokegen
-```
-
-### Getting To Know Yeoman
-
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
-
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
-
-
-## License
-
-MIT
+It is strongly suggested that you make the bower dependencies of this project dependencies of the parent project, and
+only include scripts/scripts.js and the sass/ folder. Include the scripts/scripts.js as part of your index.html and
+process the sass/ folder along with your own sass, note that it expects bower_components to be in the path.
