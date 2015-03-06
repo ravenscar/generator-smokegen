@@ -1,0 +1,17 @@
+// strip-in-dist:start
+
+// bower:scss
+// endbower
+
+// strip-in-dist:end
+
+// findcss
+// endfindcss
+
+// css for demos in index.html
+.<%= readableName %> {
+  padding: 0;
+}
+
+// it is recommended you do not add any more style info here if possible. Just add it to the components' scss file.
+
