@@ -125,6 +125,7 @@ module.exports = yeoman.generators.Base.extend({
 
     context.controllerInstanceName = _.camelCase(name);
     context.controllerName = _.capitalize(_.camelCase(prefixedName + "-controller"));
+    context.controllerPartialName = _.capitalize(_.camelCase(prefixedName + "-partial-controller"));
     context.demoControllerName = _.capitalize(_.camelCase(prefixedName + "-demo-controller"));
     context.serviceName = _.camelCase(prefixedName + "-service");
 
