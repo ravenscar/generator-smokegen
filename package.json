@@ -20,6 +20,7 @@
     "app",
     "component",
     "service",
+    "partial",
     "scriptBase.js"
   ],
   "keywords": [
