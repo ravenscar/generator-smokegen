@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><%= presentationName %></title>
+  <!-- build:css(bower_components/) styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- endbower -->
+  <!-- endbuild -->
+  <link rel="stylesheet" href="styles/main.css"/><!-- don't delete this, it should be served from ./.tmp/ or ./dist/ -->
+</head>
+<body ng-app="<%= moduleName %>" class="<%= readableName %>">
+
+<div id="content" class="container-fluid">
+  <div class="app-screen" ui-view> <!-- The UI-router views get injected here, so you shouldn't need to add anything -->
+  </div>
+</div>
+
+<!-- build:js(bower_components/) scripts/vendor.js -->
+<!-- bower:js -->
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js scripts/scripts.js -->
+<!-- findng -->
+<!-- endfindng -->
+<!-- endbuild -->
+
+</body>
+</html>

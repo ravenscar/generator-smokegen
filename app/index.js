@@ -77,40 +77,39 @@ module.exports = scriptBase.extend({
     this.mkdir('app');
   },
 
-  writing: {
-    app: function () {
-      var dstFiles, srcFiles = [
-        '_index.html',
-        '_app.js',
-        '_demo.js',
-        '_main.scss'
-      ];
+  writing: function () {
+    var that = this, dstFiles, srcFiles, commonFiles = [
+      ['_.editorconfig', '.editorconfig', []],
+      ['_.jshintrc', '.jshintrc', []],
+      ['_karma.conf.js', 'karma.conf.js', []],
+      ['_package.json', 'package.json', []],
+      ['_README.md', 'README.md', []]
+    ], topFiles = [
+      ['_top_gulpfile.js', 'gulpfile.js', []],
+      ['_top_bower.json', 'bower.json', []],
 
-      dstFiles = _.map(srcFiles, function (filename) {
-        return (filename[0] === '_') ? filename.replace(/_/, '') : '.' + filename;
-      });
+      ['_top_app.js', 'app.js', ['app']],
+      ['_top_index.html', 'index.html', ['app']],
+      ['_top_main.scss', 'main.scss', ['app']],
+    ], subFiles = [
+      ['_sub_gulpfile.js', 'gulpfile.js', []],
+      ['_sub_bower.json', 'bower.json', []],
 
-      this._copyTemplates(_.zip(srcFiles, dstFiles), 'app', context);
-    },
+      ['_sub_demo.js', 'demo.js', ['app']],
+      ['_sub_app.js', 'app.js', ['app']],
+      ['_sub_index.html', 'index.html', ['app']],
+      ['_sub_main.scss', 'main.scss', ['app']],
+    ];
 
-    projectfiles: function () {
-      var dstFiles, srcFiles = [
-        'editorconfig',
-        'jshintrc',
-        '_gulpfile.js',
-        '_karma.conf.js',
-        '_karma.conf.js',
-        '_package.json',
-        '_bower.json',
-        '_README.md'
-      ];
-
-      dstFiles = _.map(srcFiles, function (filename) {
-        return (filename[0] === '_') ? filename.replace(/_/, '') : '.' + filename;
-      });
-
-      this._copyTemplates(_.zip(srcFiles, dstFiles), [], context);
+    if (context.appType === 'TOP') {
+      srcFiles = commonFiles.concat(topFiles);
+    } else {
+      srcFiles = commonFiles.concat(subFiles);
     }
+
+    _.each(srcFiles, function (src) {
+      that._copyTemplates([[src[0], src[1]]], src[2], context);
+    });
   },
 
   install: function () {
