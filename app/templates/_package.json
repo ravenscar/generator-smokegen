@@ -1,5 +1,5 @@
 {
-  "name": "<%= projectName %>",cd
+  "name": "<%= projectName %>",
   "version": "0.0.0",
   "private": <%= isPrivate %>,
   "dependencies": {},
