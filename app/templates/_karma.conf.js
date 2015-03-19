@@ -29,7 +29,7 @@ module.exports = function(config) {
     ],
 
     // web server port
-    port: 8080,
+    port: Math.floor((Math.random() * 10000) + 10000),
 
     // Start these browsers, currently available:
     // - Chrome
