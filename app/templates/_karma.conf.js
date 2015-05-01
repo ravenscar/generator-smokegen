@@ -16,6 +16,17 @@ module.exports = function(config) {
     // testing framework to use (jasmine/mocha/qunit/...)
     frameworks: ['jasmine'],
 
+    preprocessors: {
+      'app/**/!(*spec.js|*demo-controller.js)': 'coverage'
+    },
+
+    reporters: ['progress', 'coverage'],
+
+    coverageReporter: {
+      type : 'html',
+      dir : 'coverage/'
+    },
+
     // list of files / patterns to load in the browser
     files: [
       // bower:js
@@ -46,7 +57,9 @@ module.exports = function(config) {
     // Which plugins to enable
     plugins: [
       'karma-phantomjs-launcher',
-      'karma-jasmine'
+      'karma-chrome-launcher',
+      'karma-jasmine',
+      'karma-coverage'
     ],
 
     // Continuous Integration mode
