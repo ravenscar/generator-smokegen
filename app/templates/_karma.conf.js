@@ -17,7 +17,8 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
 
     preprocessors: {
-      'app/**/!(*spec.js|*demo-controller.js)': 'coverage'
+      'app/**/!(*spec.js|*demo-controller.js|*.html)': 'coverage',
+      'app/**/*.html': ['ng-html2js']
     },
 
     reporters: ['progress', 'coverage'],
@@ -33,10 +34,17 @@ module.exports = function(config) {
       // endbower
       'bower_components/angular-mocks/angular-mocks.js',// have to explicitly add this as bower can't
       'app/**/*.js',
+      'app/**/*.html'
     ],
+
+    ngHtml2JsPreprocessor: {
+      stripPrefix: 'app/',
+      moduleName: '<%= moduleName %>'
+    },
 
     // list of files / patterns to exclude
     exclude: [
+      'app/index.html'
     ],
 
     // web server port
@@ -59,7 +67,8 @@ module.exports = function(config) {
       'karma-phantomjs-launcher',
       'karma-chrome-launcher',
       'karma-jasmine',
-      'karma-coverage'
+      'karma-coverage',
+      'karma-ng-html2js-preprocessor'
     ],
 
     // Continuous Integration mode
@@ -70,7 +79,7 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_INFO
 
     // Uncomment the following lines if you are using grunt's server to run the tests
     // proxies: {
