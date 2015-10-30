@@ -3,6 +3,8 @@ var path = require('path');
 var fs = require('fs');
 var _ = require('lodash');
 var yeoman = require('yeoman-generator');
+var config = require('../../smokegen.js');
+var webRoot = config.webRoot;
 
 module.exports = yeoman.generators.Base.extend({
   /**
@@ -65,8 +67,7 @@ module.exports = yeoman.generators.Base.extend({
 
     if (bowerJson) {
       context.bowerJson = bowerJson;
-      context.appPath = path.join(process.cwd(), bowerPath.join(path.sep), 'app');
-      context.appPath = fs.existsSync(context.appPath) ? context.appPath : path.join(process.cwd(), bowerPath.join(path.sep), 'www');
+      context.appPath = path.join(process.cwd(), bowerPath.join(path.sep), webRoot);
       context.ngModule = bowerJson.module || _.kebabCase(bowerJson.name).replace(/-/g, '.');
       context.ngPrefix = bowerJson.angularPrefix || "";
     } else {
