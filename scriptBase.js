@@ -3,7 +3,7 @@ var path = require('path');
 var fs = require('fs');
 var _ = require('lodash');
 var yeoman = require('yeoman-generator');
-var config = require('../../smokegen.js');
+var config = require(path.join(process.cwd(),'smokegen.js'));
 var webRoot = config.webRoot;
 
 module.exports = yeoman.generators.Base.extend({
