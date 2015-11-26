@@ -21,7 +21,8 @@
     "component",
     "service",
     "partial",
-    "scriptBase.js"
+    "scriptBase.js",
+    "default-smokegen.js"
   ],
   "keywords": [
     "yeoman-generator"
