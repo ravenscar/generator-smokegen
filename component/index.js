@@ -63,7 +63,7 @@ module.exports = scriptBase.extend({
           } else if (fs.existsSync(path.join(process.cwd(), 'app'))) {
             componentPath = path.join('app', 'components', kebab);
           } else if (fs.existsSync(path.join(process.cwd(), 'www'))) {
-            componentPath = path.join('www', 'services', kebab);
+            componentPath = path.join('www', 'components', kebab);
           } else {
             componentPath = path.join('components', kebab);
           }
