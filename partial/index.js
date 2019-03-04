@@ -56,6 +56,8 @@ module.exports = scriptBase.extend({
             partialPath = kebab;
           } else if (fs.existsSync(path.join(process.cwd(), 'app'))) {
             partialPath = path.join('app', 'partials', kebab);
+          }else if (fs.existsSync(path.join(process.cwd(), 'www'))) {
+            partialPath = path.join('www', 'partials', kebab);
           } else {
             partialPath = path.join('partials', kebab);
           }

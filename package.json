@@ -1,6 +1,6 @@
 {
   "name": "generator-smokegen",
-  "version": "0.2.1",
+  "version": "0.3.1",
   "description": "Yeoman generator for complex multi-sub-project AngularJS projects.",
   "license": "MIT",
   "main": "app/index.js",
@@ -21,7 +21,8 @@
     "component",
     "service",
     "partial",
-    "scriptBase.js"
+    "scriptBase.js",
+    "default-smokegen.js"
   ],
   "keywords": [
     "yeoman-generator"
